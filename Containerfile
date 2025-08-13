@@ -25,13 +25,12 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/build.sh && \
     ostree container commit
 
-#COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-42 / /tmp/akmods-nvidia
-#RUN find /tmp/akmods-nvidia
-## optionally install remove old and install new kernel
-#dnf -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
-## install ublue support package and desired kmod(s)
-#RUN dnf5 install -y /tmp/akmods-nvidia/rpms/ublue-os/ublue-os-nvidia*.rpm
-#RUN dnf5 install -y /tmp/akmods-nvidia/rpms/kmods/kmod-nvidia*.rpm
+COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-42 /rpms/ /tmp/rpms
+      RUN find /tmp/rpms
+      RUN rpm-ostree install /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
+      RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1/}' /etc/yum.repos.d/nvidia-container-toolkit.repo
+      RUN sed -i '0,/enabled=0/{s/enabled=0/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-nvidia.repo   
+      RUN rpm-ostree install /tmp/rpms/kmods/kmod-nvidia*.rpm libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-driver-cuda nvidia-modprobe nvidia-persistenced nvidia-settings nvidia-container-toolkit 
 
 ### LINTING
 ## Verify final image and contents are correct.
