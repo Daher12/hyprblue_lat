@@ -25,7 +25,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/build.sh && \
     ostree container commit
 
-COPY --from=ghcr.io/ublue-os/akmods-nvidia:latest / /tmp/akmods-nvidia
+COPY --from=ghcr.io/ublue-os/akmods-nvidia:main / /tmp/akmods-nvidia
 RUN find /tmp/akmods-nvidia
 ## optionally install remove old and install new kernel
 # dnf -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
