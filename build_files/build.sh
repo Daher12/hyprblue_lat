@@ -36,7 +36,9 @@ mkdir -p /nix && \
 
 systemctl enable tlp
 systemctl enable tailscaled
-systemctl enable supergfxctld
+systemctl enable supergfxd
+
+rpm-ostree kargs --append=rd.driver.blacklist=nouveau,nova_core --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
  
 
 
