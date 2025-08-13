@@ -4,7 +4,7 @@ set -ouex pipefail
 
 ### Install packages
 
-dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer loupe --setopt=install_weak_deps=False 
+dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer loupe tuigreet greetd --setopt=install_weak_deps=False 
 #dnf5 install -y --setopt=install_weak_deps=False gnome-shell ffmpegthumbnailer gnome-extensions-app libavcodec-freeworld nautilus xdg-user-dirs xdg-user-dirs-gtk 
 
 ## Hyprland
@@ -37,5 +37,6 @@ mkdir -p /nix && \
 systemctl enable tlp
 systemctl enable tailscaled
 systemctl enable supergfxd
+systemctl enable greetd
 
 
