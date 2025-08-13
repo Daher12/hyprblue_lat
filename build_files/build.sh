@@ -23,7 +23,7 @@ dnf5 -y copr disable tofik/nwg-shell
 ## Tailscale
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
-dnf5 -y install tailscale zsh-autosuggestions firefox
+dnf5 -y install tailscale zsh-autosuggestions 
 
 rm /etc/yum.repos.d/tailscale.repo
 rm /etc/yum.repos.d/shells:zsh-users:zsh-autosuggestions.repo
@@ -37,8 +37,5 @@ mkdir -p /nix && \
 systemctl enable tlp
 systemctl enable tailscaled
 systemctl enable supergfxd
-
-rpm-ostree kargs --append=rd.driver.blacklist=nouveau,nova_core --append=modprobe.blacklist=nouveau --append=nvidia-drm.modeset=1
- 
 
 
