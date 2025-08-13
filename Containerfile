@@ -26,7 +26,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     ostree container commit
 
 #COPY --from=ghcr.io/ublue-os/akmods-nvidia:main-42 / /tmp/akmods-nvidia
-RUN find /tmp/akmods-nvidia
+#RUN find /tmp/akmods-nvidia
 ## optionally install remove old and install new kernel
 #dnf -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
 ## install ublue support package and desired kmod(s)
