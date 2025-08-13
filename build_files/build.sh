@@ -16,7 +16,7 @@ dnf5 -y copr enable ublue-os/staging
 dnf5 -y install supergfxctl 
 dnf5 -y copr disable ublue-os/staging
 
-dnf5 -y copr enable enable tofik/nwg-shell 
+dnf5 -y copr enable tofik/nwg-shell 
 dnf5 -y install nwg-look
 dnf5 -y copr disable tofik/nwg-shell 
 
