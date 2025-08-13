@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y blueman yazi libavcodec-freeworld nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor
+dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor
 #dnf5 install -y --setopt=install_weak_deps=False gnome-shell ffmpegthumbnailer gnome-extensions-app libavcodec-freeworld nautilus xdg-user-dirs xdg-user-dirs-gtk 
 
 # Use a COPR Example:
