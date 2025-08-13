@@ -20,6 +20,11 @@ dnf5 -y copr enable tofik/nwg-shell
 dnf5 -y install nwg-look
 dnf5 -y copr disable tofik/nwg-shell 
 
+dnf5 -y copr enable chenxiaolong/sbctl 
+dnf5 -y install sbctl
+dnf5 -y copr disable chenxiaolong/sbctl 
+
+
 ## Tailscale
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
