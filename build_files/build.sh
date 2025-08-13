@@ -4,17 +4,21 @@ set -ouex pipefail
 
 ### Install packages
 
-dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl --setopt=install_weak_deps=False 
+dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer loupe --setopt=install_weak_deps=False 
 #dnf5 install -y --setopt=install_weak_deps=False gnome-shell ffmpegthumbnailer gnome-extensions-app libavcodec-freeworld nautilus xdg-user-dirs xdg-user-dirs-gtk 
 
 ## Hyprland
 dnf5 -y copr enable solopasha/hyprland 
-dnf5 -y install hyprland hyprpaper hypridle hyprlock hyprpolkitagent hyprshot   --setopt=install_weak_deps=False
+dnf5 -y install hyprland hyprpaper hypridle hyprlock hyprpolkitagent hyprshot waybar-git  --setopt=install_weak_deps=False
 dnf5 -y copr disable solopasha/hyprland 
 
 dnf5 -y copr enable ublue-os/staging
 dnf5 -y install supergfxctl 
 dnf5 -y copr disable ublue-os/staging
+
+dnf5 -y copr enable enable tofik/nwg-shell 
+dnf5 -y install nwg-look
+dnf5 -y copr disable tofik/nwg-shell 
 
 ## Tailscale
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
@@ -29,5 +33,12 @@ rm /etc/yum.repos.d/shells:zsh-users:zsh-autosuggestions.repo
 mkdir -p /nix && \
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix -o /nix/determinate-nix-installer.sh && \
 	chmod a+rx /nix/determinate-nix-installer.sh
+
+chsh -s $(which zsh)
+
+systemctl enable tlp
+systemctl enable tailscaled
+systemctl enable supergfxctld
+ 
 
 
