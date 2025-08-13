@@ -34,8 +34,6 @@ mkdir -p /nix && \
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix -o /nix/determinate-nix-installer.sh && \
 	chmod a+rx /nix/determinate-nix-installer.sh
 
-chsh -s $(which zsh)
-
 systemctl enable tlp
 systemctl enable tailscaled
 systemctl enable supergfxctld
