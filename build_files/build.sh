@@ -12,9 +12,9 @@ dnf5 -y copr enable solopasha/hyprland
 dnf5 -y install hyprland hyprpaper hypridle hyprlock hyprpolkitagent hyprshot waybar-git  --setopt=install_weak_deps=False
 dnf5 -y copr disable solopasha/hyprland 
 
-dnf5 -y copr enable ublue-os/staging
-dnf5 -y install supergfxctl 
-dnf5 -y copr disable ublue-os/staging
+#dnf5 -y copr enable ublue-os/staging
+#dnf5 -y install supergfxctl 
+#dnf5 -y copr disable ublue-os/staging
 
 dnf5 -y copr enable tofik/nwg-shell 
 dnf5 -y install nwg-look
@@ -28,7 +28,7 @@ dnf5 -y copr disable chenxiaolong/sbctl
 ## Tailscale
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
-dnf5 -y install tailscale zsh-autosuggestions 
+dnf5 -y install tailscale zsh-autosuggestions clapper
 
 rm /etc/yum.repos.d/tailscale.repo
 rm /etc/yum.repos.d/shells:zsh-users:zsh-autosuggestions.repo
@@ -41,7 +41,7 @@ mkdir -p /nix && \
 
 systemctl enable tlp
 systemctl enable tailscaled
-systemctl enable supergfxd
+#systemctl enable supergfxd
 systemctl enable greetd
 
 
