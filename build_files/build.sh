@@ -4,7 +4,7 @@ set -ouex pipefail
 
 ### Install packages
 
-dnf5 install -y blueman nautilus clapper xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer loupe tuigreet greetd rofi-wayland --setopt=install_weak_deps=False 
+dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer tuigreet greetd rofi-wayland --setopt=install_weak_deps=False 
 
 ## Enable Ublue copr
 
