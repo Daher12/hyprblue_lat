@@ -4,8 +4,7 @@ set -ouex pipefail
 
 ### Install packages
 
-dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer loupe tuigreet greetd --setopt=install_weak_deps=False 
-#dnf5 install -y --setopt=install_weak_deps=False gnome-shell ffmpegthumbnailer gnome-extensions-app libavcodec-freeworld nautilus xdg-user-dirs xdg-user-dirs-gtk 
+dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer loupe tuigreet greetd rofi-wayland --setopt=install_weak_deps=False 
 
 ## Hyprland
 dnf5 -y copr enable solopasha/hyprland 
@@ -38,6 +37,9 @@ rm /etc/yum.repos.d/shells:zsh-users:zsh-autosuggestions.repo
 mkdir -p /nix && \
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix -o /nix/determinate-nix-installer.sh && \
 	chmod a+rx /nix/determinate-nix-installer.sh
+
+ curl -L https://github.com/curlpipe/ox/releases/latest/download/ox -o /usr/bin/ox && \
+ chmod +x /usr/bin/ox
 
 systemctl enable tlp
 systemctl enable tailscaled
