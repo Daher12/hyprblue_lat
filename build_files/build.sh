@@ -8,7 +8,7 @@ dnf5 install -y blueman nautilus clapper xdg-user-dirs-gtk xdg-user-dirs file-ro
 
 ## Enable Ublue copr
 
-dnf5 -y copr enable ublue/os-akmods
+dnf5 -y copr enable ublue-os/akmods 
 
 ## Hyprland
 dnf5 -y copr enable solopasha/hyprland 
