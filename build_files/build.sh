@@ -20,9 +20,6 @@ dnf5 -y copr disable solopasha/hyprland
 dnf5 -y copr enable tofik/nwg-shell 
 dnf5 -y install nwg-look
 dnf5 -y copr disable tofik/nwg-shell 
-dnf5 -y copr disable erikreider/SwayNotificationCenter
-dnf5 -y copr disable mochaa/gtk-session-lock
-dnf5 -y copr disable tofik/sway
 
 ## SBCTL
 
