@@ -15,7 +15,7 @@ dnf5 install -y blueman bluez-tools iwd --setopt=install_weak_deps=False
 
 ## other
 
-dnf5 install -y nautilus gvfs-nfs sddm sddm-themes layer-shell-qt --setopt=install_weak_deps=False 
+dnf5 install -y nautilus gvfs-nfs sddm sddm-themes layer-shell-qt gnome-shell --setopt=install_weak_deps=False 
 
 ## Enable Ublue copr
 dnf5 -y copr enable ublue-os/akmods 
@@ -36,8 +36,8 @@ dnf5 -y copr disable chenxiaolong/sbctl
 
 ## Tailscale
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
-#dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
-#dnf5 -y install zsh-autosuggestions zsh-syntax-highlighting
+dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
+dnf5 -y install zsh-autosuggestions zsh-syntax-highlighting
 dnf5 -y install tailscale 
 
 rm /etc/yum.repos.d/tailscale.repo
@@ -50,8 +50,16 @@ mkdir -p /nix && \
 	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix -o /nix/determinate-nix-installer.sh && \
 	chmod a+rx /nix/determinate-nix-installer.sh
 
- curl -L https://github.com/curlpipe/ox/releases/latest/download/ox -o /usr/bin/ox && \
- chmod +x /usr/bin/ox
+curl -L https://github.com/curlpipe/ox/releases/latest/download/ox -o /usr/bin/ox && \
+chmod +x /usr/bin/ox
+
+sed -i 's/color: "black"/color: "white"/' /usr/share/sddm/themes/maldives/Main.qml
+sed -i 's/id: lblPassword/id: lblPassword\ncolor: "white"/' /usr/share/sddm/themes/maldives/Main.qml
+sed -i 's/id: lblName/id: lblName\ncolor: "white"/' /usr/share/sddm/themes/maldives/Main.qml
+sed -i 's/id: lblSession/id: lblSession\ncolor: "white"/' /usr/share/sddm/themes/maldives/Main.qml
+sed -i 's/id: lblLayout/id: lblLayout\ncolor: "white"/' /usr/share/sddm/themes/maldives/Main.qml
+sed -i 's/id: errorMessage/id: errorMessage\ncolor: "white"/' /usr/share/sddm/themes/maldives/Main.qml
 
 systemctl enable tlp
 systemctl enable tailscaled
+systemctl disable gdm
