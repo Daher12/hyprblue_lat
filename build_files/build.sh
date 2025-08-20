@@ -1,22 +1,32 @@
-#!/bin/bash
+##!/bin/bash
 
 set -ouex pipefail
 
 ### Install packages
 
-dnf5 install -y blueman nautilus xdg-user-dirs-gtk xdg-user-dirs file-roller kitty gnome-text-editor blueman-nautilus tlp zsh zsh-syntax-highlighting brightnessctl ffmpegthumbnailer loupe tuigreet greetd rofi-wayland --setopt=install_weak_deps=False 
+## environment
+dnf5 install -y  dbus-tools dbus-daemon xdg-user-dirs kitty tlp zsh --setopt=install_weak_deps=False 
+
+## sound
+#dnf5 install -y pavucontrol
+
+# networking
+dnf5 install -y blueman bluez-tools iwd --setopt=install_weak_deps=False
+
+## other
+
+dnf5 install -y nautilus gvfs-nfs sddm sddm-themes layer-shell-qt
+
+## Enable Ublue copr
+dnf5 -y copr enable ublue-os/akmods 
 
 ## Hyprland
 dnf5 -y copr enable solopasha/hyprland 
-dnf5 -y install hyprland hyprpaper hypridle hyprlock hyprpolkitagent hyprshot waybar-git  --setopt=install_weak_deps=False
+dnf5 -y install hyprland hyprpaper hypridle hyprlock hyprpolkitagent hyprshot --setopt=install_weak_deps=False
 dnf5 -y copr disable solopasha/hyprland 
 
-#dnf5 -y copr enable ublue-os/staging
-#dnf5 -y install supergfxctl 
-#dnf5 -y copr disable ublue-os/staging
-
 dnf5 -y copr enable tofik/nwg-shell 
-dnf5 -y install nwg-look
+dnf5 -y install nwg-look --setopt=install_weak_deps=False
 dnf5 -y copr disable tofik/nwg-shell 
 
 dnf5 -y copr enable chenxiaolong/sbctl 
@@ -26,12 +36,14 @@ dnf5 -y copr disable chenxiaolong/sbctl
 
 ## Tailscale
 dnf5 -y config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
-dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
-dnf5 -y install tailscale zsh-autosuggestions clapper
+#dnf5 -y config-manager addrepo --from-repofile=https://download.opensuse.org/repositories/shells:zsh-users:zsh-autosuggestions/Fedora_Rawhide/shells:zsh-users:zsh-autosuggestions.repo
+#dnf5 -y install zsh-autosuggestions zsh-syntax-highlighting
+dnf5 -y install tailscale 
 
 rm /etc/yum.repos.d/tailscale.repo
-rm /etc/yum.repos.d/shells:zsh-users:zsh-autosuggestions.repo
+#rm /etc/yum.repos.d/shells:zsh-users:zsh-autosuggestions.repo
 
+dnf5 -y copr disable ublue-os/akmods
 
 ## Nix
 mkdir -p /nix && \
@@ -43,7 +55,3 @@ mkdir -p /nix && \
 
 systemctl enable tlp
 systemctl enable tailscaled
-#systemctl enable supergfxd
-systemctl enable greetd
-
-
