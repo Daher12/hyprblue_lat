@@ -15,8 +15,7 @@ dnf5 install -y blueman bluez-tools iwd --setopt=install_weak_deps=False
 
 ## other
 
-dnf5 install -y nautilus gvfs-nfs gnome-shell --setopt=install_weak_deps=False 
-systemctl disable gdm
+dnf5 install -y nautilus gvfs-nfs --setopt=install_weak_deps=False 
 
 ## Enable Ublue copr
 dnf5 -y copr enable ublue-os/akmods 
@@ -54,6 +53,9 @@ mkdir -p /nix && \
 curl -L https://github.com/curlpipe/ox/releases/latest/download/ox -o /usr/bin/ox && \
 chmod +x /usr/bin/ox
 
+curl -L https://github.com/Daher12/dots/blob/main/iwd.conf -o /etc/NetworkManager/conf.d/iwd.conf
+
+systemctl disable wpa_supplicant
 systemctl enable tlp
 systemctl enable tailscaled
 
